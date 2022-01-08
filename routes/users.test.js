@@ -15,7 +15,6 @@ jest.mock('../services/environment', () => {
     port: 3001,
     stytchProjectId: 'project-test-11111111-1111-1111-1111-111111111111',
     stytchSecret: 'secret-test-111111111111',
-    sessionSecret: 'asessionsecret-long-random-string-ie-openssl',
     masterAdminEmail: 'master@gmail.com',
   };
 });

@@ -1,5 +1,9 @@
 # advisor001-api
 
+[Developer Notes](docs/developer.md)
+
+[API Documentation](docs/api.md)
+
 package.json will install eslint, prettier, and dependent sub-packages
 
 install the following vscode extensions:
