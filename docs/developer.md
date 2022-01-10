@@ -29,7 +29,7 @@ _Server Setup_
   - Open a Termainal: Terminal > New Terminal
   - Type `npm install`
 - Install the following vscode extensions:
-  eslint, prettier, prettier eslint
+  eslint, prettier, prettier eslint, markdown all in one
 
 - Make the following vscode setting changes:
 
@@ -47,19 +47,19 @@ _Server Setup_
   MASTER_ADMIN_EMAIL=<your UW-Stout Email>
   ```
 
-**To run the API server**, from a Terminal: run `npm start`
+**To run the API server**, from a terminal: run `npm start`
 
-**To run the API server with nodemon**, from a Terminal: run `npm dev`, this will monitor for changes to codebase and will restart the server automatically if it detects a change, pretty nice for active development and testing.
+**To run the API server with nodemon**, from a terminal: run `npm dev`, this will monitor for changes to codebase and will restart the server automatically if it detects a change, pretty nice for active development and testing.
 
 **To run the API server in debug**, with vcode: Run > Start Debugging, Select Node.js if prompted
 
-**To run all Jest tests**, from a Terminal: run `npm test`
+**To run all Jest tests**, from a terminal: run `npm test`
 
-**To run all Jest tests in debug**, from a Terminal: run `npm test:debug`
+**To run all Jest tests in debug**, from a terminal: run `npm test:debug`
 
 #### Obtaining Bearer Tokens
 
-Essentially, you need mimic what the FE does to [generate a magic link](https://stytch.com/docs/api/log-in-or-create-user-by-email) with the Stytch Project ID and Secret (listed in Canvas) and your email address. You can make the request easily with CURL or you can use postman. When you receive the email, you can use that link (with the token) to then authenticate your email with Stytch (described above) and obtain the session identifier.
+Essentially, you need to mimic what the FE does to [generate a magic link](https://stytch.com/docs/api/log-in-or-create-user-by-email) with the Stytch Project ID and Secret (listed in Canvas) and your email address. You can make the request easily with CURL or you can use postman. When you receive the email, you can use that link (with the token) to then authenticate your email with Stytch (described above) and obtain the session identifier.
 
 _TODO_ - Add Postman scripts with shortcuts to generate a magic link and authenticate token to obtain a session identifier.
 
@@ -73,11 +73,11 @@ _TODO_ - Add Postman scripts with shortcuts to generate a magic link and authent
 
 ### Definition of Done
 
-- Models require unit testing all functions mocking necessary services (i.e. database, environment)
+- Models require unit testing all functions mocking necessary services (e.g. database, environment)
 - Routes require unit testing all expected outcomes mocking the Models used
 - Routes require postman happy path integration tests
 - Source code is fully linted with no warnings
 - All jest tests run successfully
 - Pull request to staging branch
 - Staging branch sucessfully deployed to staging environment
-- (TODO) Integration tests run successfully on staging environment
+- Integration tests run successfully on staging environment

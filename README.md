@@ -1,29 +1,26 @@
-# advisor001-api
+## advisor001-api
+
+The Program Course Advisor (Advisor) is an app designed to facilitate easier course planning for students and advisors of UW-Stout. The app is being developed in the CS458 capstone course.
+
+This repository is the RESTFUL API back-end for the Advisor web app.
 
 [Developer Notes](docs/developer.md)
 
 [API Documentation](docs/api.md)
 
-package.json will install eslint, prettier, and dependent sub-packages
+### Running the API
 
-install the following vscode extensions:
-ejs, eslint, prettier, prettier eslint
+Prerequisite: Node.js 14+ must be installed first and you must a connection string to an accessible PostgreSQL database.
 
-make the following vscode setting changes:
-Editor: Format on Save - turn on
-Editor: Default Formatter - Prettier - Code Formatter (esbenp.prettier-vscode)
-Eslint › Code Actions On Save: Mode - set to problems
-
-development environment setup
-
-- create a .env
-- install postgres on localhost, set master password
-- create a database (use postgres as owner), accept defaults
-- set in .env
+- Clone this repo
+- Create a .env in the root of this repo, and set the following environment variables:
+  ```env
+  PORT=3000
   PG_CONNECTION_STRING=postgres://postgres:<masterpassword>@localhost:5432/<dbname>
-
-Development Conventions
-
-- modules are either:
-  - Interface, module.exports is an object, i.e. Services, Modules
-  - Instance, module.exports is a function returning in an instance, Apps and Routes
+  STYTCH_PROJECT_ID=<See Canvas Notes>
+  STYTCH_SECRET=<See Canvas Notes>
+  MASTER_ADMIN_EMAIL=<your UW-Stout Email>
+  ```
+- Open a terminal in the root of this repo:
+  - Run `npm install`
+  - Run `npm start`
