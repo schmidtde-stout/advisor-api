@@ -98,7 +98,7 @@ describe('User Model', () => {
       expect(db.query.mock.calls).toHaveLength(1);
       expect(db.query.mock.calls[0]).toHaveLength(2);
       expect(db.query.mock.calls[0][0]).toBe(
-        'SELECT * from "user" WHERE role=$1 AND enable=$2 LIMIT $3 OFFSET $4;'
+        'SELECT * from "user" WHERE "role"=$1 AND "enable"=$2 LIMIT $3 OFFSET $4;'
       );
       expect(db.query.mock.calls[0][1]).toHaveLength(4);
       expect(db.query.mock.calls[0][1][0]).toBe('user');
@@ -120,7 +120,7 @@ describe('User Model', () => {
       expect(db.query.mock.calls).toHaveLength(1);
       expect(db.query.mock.calls[0]).toHaveLength(2);
       expect(db.query.mock.calls[0][0]).toBe(
-        'SELECT * from "user" WHERE role=$1 AND enable=$2 LIMIT $3 OFFSET $4;'
+        'SELECT * from "user" WHERE "role"=$1 AND "enable"=$2 LIMIT $3 OFFSET $4;'
       );
       expect(db.query.mock.calls[0][1]).toHaveLength(4);
       expect(db.query.mock.calls[0][1][0]).toBe('user');
@@ -142,7 +142,7 @@ describe('User Model', () => {
       expect(db.query.mock.calls).toHaveLength(1);
       expect(db.query.mock.calls[0]).toHaveLength(2);
       expect(db.query.mock.calls[0][0]).toBe(
-        'SELECT * from "user" WHERE role=$1 AND enable=$2 LIMIT $3 OFFSET $4;'
+        'SELECT * from "user" WHERE "role"=$1 AND "enable"=$2 LIMIT $3 OFFSET $4;'
       );
       expect(db.query.mock.calls[0][1]).toHaveLength(4);
       expect(db.query.mock.calls[0][1][0]).toBe('user');
@@ -168,7 +168,7 @@ describe('User Model', () => {
       expect(db.query.mock.calls).toHaveLength(1);
       expect(db.query.mock.calls[0]).toHaveLength(2);
       expect(db.query.mock.calls[0][0]).toBe(
-        'INSERT INTO "user" (userId,email,enable,role) VALUES ($1,$2,$3,$4) RETURNING *;'
+        'INSERT INTO "user" ("userId","email","enable","role") VALUES ($1,$2,$3,$4) RETURNING *;'
       );
       expect(db.query.mock.calls[0][1]).toHaveLength(4);
       expect(db.query.mock.calls[0][1][0]).toBe(row.userId);
@@ -191,7 +191,7 @@ describe('User Model', () => {
       expect(db.query.mock.calls).toHaveLength(1);
       expect(db.query.mock.calls[0]).toHaveLength(2);
       expect(db.query.mock.calls[0][0]).toBe(
-        'INSERT INTO "user" (userId,email,enable,role) VALUES ($1,$2,$3,$4) RETURNING *;'
+        'INSERT INTO "user" ("userId","email","enable","role") VALUES ($1,$2,$3,$4) RETURNING *;'
       );
       expect(db.query.mock.calls[0][1]).toHaveLength(4);
       expect(db.query.mock.calls[0][1][0]).toBe(row.userId);
@@ -216,7 +216,7 @@ describe('User Model', () => {
       expect(db.query.mock.calls).toHaveLength(1);
       expect(db.query.mock.calls[0]).toHaveLength(2);
       expect(db.query.mock.calls[0][0]).toBe(
-        'INSERT INTO "user" (userId,email,enable,role) VALUES ($1,$2,$3,$4) RETURNING *;'
+        'INSERT INTO "user" ("userId","email","enable","role") VALUES ($1,$2,$3,$4) RETURNING *;'
       );
       expect(db.query.mock.calls[0][1]).toHaveLength(4);
       expect(db.query.mock.calls[0][1][0]).toBe(row.userId);
@@ -241,7 +241,7 @@ describe('User Model', () => {
       expect(db.query.mock.calls).toHaveLength(1);
       expect(db.query.mock.calls[0]).toHaveLength(2);
       expect(db.query.mock.calls[0][0]).toBe(
-        'INSERT INTO "user" (userId,email,enable,role) VALUES ($1,$2,$3,$4) RETURNING *;'
+        'INSERT INTO "user" ("userId","email","enable","role") VALUES ($1,$2,$3,$4) RETURNING *;'
       );
       expect(db.query.mock.calls[0][1]).toHaveLength(4);
       expect(db.query.mock.calls[0][1][0]).toBe(row.userId);
