@@ -21,7 +21,7 @@ Create a new User. Note users created by this API are created with a `user` role
   ```json
   {
     "email": "joe25@example.com",
-    "userid": "user-test-f8b0f866-35de-4ba4-9a15-925775baebe"
+    "userId": "user-test-f8b0f866-35de-4ba4-9a15-925775baebe"
   }
   ```
 
@@ -43,7 +43,7 @@ Create a new User. Note users created by this API are created with a `user` role
     "email": "joe25@example.com",
     "enable": true,
     "role": "user",
-    "userid": "user-test-f8b0f866-35de-4ba4-9a15-925775baebe"
+    "userId": "user-test-f8b0f866-35de-4ba4-9a15-925775baebe"
   }
   ```
 

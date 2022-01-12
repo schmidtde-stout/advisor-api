@@ -26,7 +26,7 @@ _Server Setup_
 - Clone this repository
 - Open the cloned folder in Visual Studio Code (vscode): File > Open Folder the cloned folder
 - Use `npm` to install all dependent Node.js modules:
-  - Open a Termainal: Terminal > New Terminal
+  - Open a Terminal: Terminal > New Terminal
   - Type `npm install`
 - Install the following vscode extensions:
   eslint, prettier, prettier eslint, markdown all in one
@@ -49,7 +49,7 @@ _Server Setup_
 
 **To run the API server**, from a terminal: run `npm start`
 
-**To run the API server with nodemon**, from a terminal: run `npm dev`, this will monitor for changes to codebase and will restart the server automatically if it detects a change, pretty nice for active development and testing.
+**To run the API server with nodemon**, from a terminal: run `npm run dev`, this will monitor for changes to codebase and will restart the server automatically if it detects a change, pretty nice for active development and testing.
 
 **To run the API server in debug**, with vcode: Run > Start Debugging, Select Node.js if prompted
 
@@ -59,9 +59,9 @@ _Server Setup_
 
 #### Obtaining Bearer Tokens
 
-Essentially, you need to mimic what the FE does to [generate a magic link](https://stytch.com/docs/api/log-in-or-create-user-by-email) with the Stytch Project ID and Secret (listed in Canvas) and your email address. You can make the request easily with CURL or you can use postman. When you receive the email, you can use that link (with the token) to then authenticate your email with Stytch (described above) and obtain the session identifier.
+Essentially, you need to mimic what the FE does to [generate a magic link](https://stytch.com/docs/api/log-in-or-create-user-by-email) with the Stytch Project ID and Secret (listed in Canvas) and your email address. You can make the request easily with CURL or you can use postman. When you receive the email, you can use that link (with the token) to then authenticate your email with Stytch (described above) and obtain the session token.
 
-_TODO_ - Add Postman scripts with shortcuts to generate a magic link and authenticate token to obtain a session identifier.
+_TODO_ - Add Postman scripts with shortcuts to generate a magic link and authenticate token to obtain a session token.
 
 ### Development Conventions
 

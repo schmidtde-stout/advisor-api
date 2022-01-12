@@ -6,4 +6,4 @@ initialize();
 
 const app = require('./app')();
 const port = environment.port;
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(port, () => console.log(`Advisor API listening on port ${port}!`));

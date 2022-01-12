@@ -1,7 +1,7 @@
 {
-  "name": "advisor-001",
+  "name": "advisor-001-api",
   "version": "1.0.0",
-  "description": "Program Course Advisor",
+  "description": "Program Course Advisor API",
   "main": "server.js",
   "repository": "https://github.com/uwstout-cs458-s22/advisor001-api",
   "author": "UWStout CS458-001 Spring 2022",

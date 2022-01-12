@@ -13,10 +13,10 @@ function initialize() {
         enable boolean,
         id serial,
         role text CHECK (role IN ('user', 'director', 'admin')),
-        userId text,
+        "userId" text,
         PRIMARY KEY (id)
       );
-      CREATE INDEX IF NOT EXISTS "IDX_user_userId" ON "user" (userId);`,
+      CREATE INDEX IF NOT EXISTS "IDX_user_userId" ON "user" ("userId");`,
     (err, res) => {
       if (err) {
         throw err;
