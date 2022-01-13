@@ -33,7 +33,7 @@ Create a new User. Note users created by this API are created with a `user` role
 
   **Code:** `201`
 
-  Or `200` if an user with matching `userid` already exists
+  Or `200` if an user with matching `userId` already exists
 
   **Content:**
 

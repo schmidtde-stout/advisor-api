@@ -44,7 +44,7 @@ Returns json data about a single user.
     "email": "joe25@example.com",
     "enable": true,
     "role": "user",
-    "userid": "user-test-f8b0f866-35de-4ba4-9a15-925775baebe"
+    "userId": "user-test-f8b0f866-35de-4ba4-9a15-925775baebe"
   }
   ```
 
@@ -123,25 +123,23 @@ Returns a json array about all users.
       "email": "joe25@example.com",
       "enable": true,
       "role": "user",
-      "userid": "user-test-f8b0f866-35de-4ba4-9a15-925775baebe"
+      "userId": "user-test-f8b0f866-35de-4ba4-9a15-925775baebe"
     },
     {
       "id": 4567,
       "email": "barb26@example.com",
       "enable": true,
       "role": "admin",
-      "userid": "user-test-6db45fe7-6b2a-456f-9f53-0e2d2ebb320c"
+      "userId": "user-test-6db45fe7-6b2a-456f-9f53-0e2d2ebb320c"
     }
   ]
   ```
 
-- **Error Response:**
-
-  **Code:** `404 NOT FOUND`
+  OR
 
   **Content:** `[]`
 
-  OR
+- **Error Response:**
 
   **Code:** `500 INTERNAL ERROR`
 
