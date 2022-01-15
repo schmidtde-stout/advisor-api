@@ -63,13 +63,14 @@ Essentially, you need to mimic what the FE does to [generate a magic link](https
 
 _TODO_ - Add Postman scripts with shortcuts to generate a magic link and authenticate token to obtain a session token.
 
-### Development Conventions
+### Development Conventions and Design NOtes
 
 - Modules are either:
   - Interface, module.exports is an object, i.e. Services, Models
   - Instance, module.exports is a function returning in an instance, Apps and Routes
 - camelCase naming convention shall be used for all naming. This includes Model columns, JSON fields, and Database table columns. Note that the Stytch API uses a snake_case onvention.
 - PostgreSQL automatically unfolds all unquoted identifiers into lower case. To support the camelCase standard, all database names (table names, column names, etc.) should be quoted. Note the sqltools has built in quoting.
+- 
 
 ### Definition of Done
 

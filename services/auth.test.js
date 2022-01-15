@@ -40,6 +40,7 @@ describe('auth tests', () => {
     await auth.authorizeSession(req, res, next);
     expect(next).not.toBeCalled();
     expect(res.status).toBeCalledWith(401);
+    expect(res.send).toBeCalledWith({ Error: 'Authorization Failed: No Token' });
   });
 
   test('authorizeSession - Bearer with no token', async () => {
@@ -51,6 +52,7 @@ describe('auth tests', () => {
     await auth.authorizeSession(req, res, next);
     expect(next).not.toBeCalled();
     expect(res.status).toBeCalledWith(401);
+    expect(res.send).toBeCalledWith({ Error: 'Authorization Failed: No Token' });
   });
 
   test('authorizeSession - Bearer expired/bad token', async () => {
@@ -66,19 +68,8 @@ describe('auth tests', () => {
     await auth.authorizeSession(req, res, next);
     expect(next).not.toBeCalled();
     expect(stytchwrapper.authenticateStytchSession.mock.calls).toHaveLength(1);
-  });
-
-  test('authorizeSession - rejected promise - really bad error', async () => {
-    const req = getMockReq({
-      headers: {
-        authorization: 'Bearer mZAYn5aLEqKUlZ_Ad9U_fWr38GaAQ1oFAhT8ds245v7Q',
-      },
-    });
-    stytchwrapper.authenticateStytchSession.mockRejectedValue(new Error('Unknown Error'));
-    await auth.authorizeSession(req, res, next);
-    expect(stytchwrapper.authenticateStytchSession.mock.calls).toHaveLength(1);
-    expect(next).not.toBeCalled();
-    expect(res.status).toBeCalled();
+    expect(res.status).toBeCalledWith(404);
+    expect(res.send).toBeCalledWith({ Error: 'Authorization Failed: Session expired.' });
   });
 
   test('authorizeSession - Good Bearer token', async () => {

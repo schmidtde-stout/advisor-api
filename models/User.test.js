@@ -64,9 +64,7 @@ describe('User Model', () => {
     });
 
     test('should return null for database error', async () => {
-      db.query.mockImplementationOnce(() => {
-        throw new Error('a testing database error');
-      });
+      db.query.mockRejectedValue(new Error('a testing database error'));
       const user = await User.findOne({ id: 123 });
       expect(user).toBeNull();
     });
@@ -155,6 +153,12 @@ describe('User Model', () => {
           expect(users[i]).toHaveProperty(key, data[i][key]);
         }
       }
+    });
+
+    test('should return null for database error', async () => {
+      db.query.mockRejectedValue(new Error('a testing database error'));
+      const users = await User.findAll();
+      expect(users).toBeNull();
     });
   });
 

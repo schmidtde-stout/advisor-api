@@ -10,7 +10,7 @@ This repository is the RESTFUL API back-end for the Advisor web app.
 
 ### Running the API
 
-Prerequisite: Node.js 14+ must be installed first and you must a connection string to an accessible PostgreSQL database.
+Prerequisite: Node.js 14+ must be installed first and you must have a connection string to an accessible PostgreSQL database.
 
 - Clone this repo
 - Create a .env in the root of this repo, and set the following environment variables:
