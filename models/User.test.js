@@ -64,9 +64,8 @@ describe('User Model', () => {
     });
 
     test('should return null for database error', async () => {
-      db.query.mockRejectedValue(new Error('a testing database error'));
-      const user = await User.findOne({ id: 123 });
-      expect(user).toBeNull();
+      db.query.mockRejectedValueOnce(new Error('a testing database error'));
+      await expect(User.findOne({ id: 123 })).rejects.toThrowError('a testing database error');
     });
   });
 
@@ -156,9 +155,8 @@ describe('User Model', () => {
     });
 
     test('should return null for database error', async () => {
-      db.query.mockRejectedValue(new Error('a testing database error'));
-      const users = await User.findAll();
-      expect(users).toBeNull();
+      db.query.mockRejectedValueOnce(new Error('a testing database error'));
+      await expect(User.findAll()).rejects.toThrowError('a testing database error');
     });
   });
 
@@ -216,7 +214,10 @@ describe('User Model', () => {
       // unexpected response from db
       db.query.mockResolvedValue({ rows: [] });
 
-      const user = await User.create(row.userId, row.email);
+      await expect(User.create(row.userId, row.email)).rejects.toThrowError(
+        'Unexpected DB Condition, insert sucessful with no returned record'
+      );
+
       expect(db.query.mock.calls).toHaveLength(1);
       expect(db.query.mock.calls[0]).toHaveLength(2);
       expect(db.query.mock.calls[0][0]).toBe(
@@ -227,7 +228,6 @@ describe('User Model', () => {
       expect(db.query.mock.calls[0][1][1]).toBe(row.email);
       expect(db.query.mock.calls[0][1][2]).toBe(row.enable);
       expect(db.query.mock.calls[0][1][3]).toBe(row.role);
-      expect(user).toBeNull();
     });
 
     test('User.create with database error', async () => {
@@ -237,11 +237,10 @@ describe('User Model', () => {
       row.enable = false;
 
       // error thrown during call to db query
-      db.query.mockImplementationOnce(() => {
-        throw new Error('a testing database error');
-      });
-
-      const user = await User.create(row.userId, row.email);
+      db.query.mockRejectedValueOnce(new Error('a testing database error'));
+      await expect(User.create(row.userId, row.email)).rejects.toThrowError(
+        'a testing database error'
+      );
       expect(db.query.mock.calls).toHaveLength(1);
       expect(db.query.mock.calls[0]).toHaveLength(2);
       expect(db.query.mock.calls[0][0]).toBe(
@@ -252,19 +251,16 @@ describe('User Model', () => {
       expect(db.query.mock.calls[0][1][1]).toBe(row.email);
       expect(db.query.mock.calls[0][1][2]).toBe(row.enable);
       expect(db.query.mock.calls[0][1][3]).toBe(row.role);
-      expect(user).toBeNull();
     });
 
     test('User.create with bad input', async () => {
-      const user = await User.create('bad input');
+      await expect(User.create('bad input')).rejects.toThrowError('UserId and Email are required.');
       expect(db.query.mock.calls).toHaveLength(0);
-      expect(user).toBeNull();
     });
 
     test('User.create with no input', async () => {
-      const user = await User.create();
+      await expect(User.create()).rejects.toThrowError('UserId and Email are required.');
       expect(db.query.mock.calls).toHaveLength(0);
-      expect(user).toBeNull();
     });
   });
 });

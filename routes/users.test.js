@@ -1,4 +1,5 @@
 const request = require('supertest');
+const HttpError = require('http-errors');
 const app = require('../app')();
 const User = require('../models/User');
 
@@ -102,7 +103,7 @@ describe('GET /users', () => {
     });
 
     test('should respond with a 500 status code when an error occurs', async () => {
-      User.findOne.mockResolvedValueOnce(null);
+      User.findOne.mockRejectedValueOnce(HttpError(500, 'Some Database Error'));
       const response = await request(app).get(`/users/100`);
       expect(response.statusCode).toBe(500);
     });
@@ -148,7 +149,7 @@ describe('GET /users', () => {
     });
 
     test('should respond with a 500 status code when an error occurs', async () => {
-      User.findOne.mockResolvedValueOnce(null);
+      User.findOne.mockRejectedValueOnce(HttpError(500, 'Some Database Error'));
       const response = await request(app).get(`/users/user-test-someguid`);
       expect(response.statusCode).toBe(500);
     });
@@ -239,9 +240,10 @@ describe('GET /users', () => {
     });
 
     test('should respond with a 500 status code when an error occurs', async () => {
-      User.findAll.mockResolvedValueOnce(null);
+      User.findAll.mockRejectedValueOnce(new Error('Some Database Failure'));
       const response = await request(app).get(`/users`);
       expect(response.statusCode).toBe(500);
+      expect(response.body.error.message).toBe('Some Database Failure');
     });
   });
 });

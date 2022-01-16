@@ -1,3 +1,4 @@
+const HttpError = require('http-errors');
 const { authenticateStytchSession } = require('./stytchwrapper');
 const { isString } = require('./utils');
 
@@ -9,12 +10,10 @@ async function authorizeSession(req, res, next) {
       await authenticateStytchSession(token);
       next();
     } catch (err) {
-      return res
-        .status(err.status_code)
-        .send({ Error: `Authorization Failed: ${err.error_message}` });
+      next(HttpError(err.status_code, `Authorization Failed: ${err.error_message}`));
     }
   } else {
-    return res.status(401).send({ Error: 'Authorization Failed: No Token' });
+    next(HttpError(401, 'Authorization of User Failed: No Token'));
   }
 }
 

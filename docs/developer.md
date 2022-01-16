@@ -70,15 +70,26 @@ _TODO_ - Add Postman scripts with shortcuts to generate a magic link and authent
   - Instance, module.exports is a function returning in an instance, Apps and Routes
 - camelCase naming convention shall be used for all naming. This includes Model columns, JSON fields, and Database table columns. Note that the Stytch API uses a snake_case onvention.
 - PostgreSQL automatically unfolds all unquoted identifiers into lower case. To support the camelCase standard, all database names (table names, column names, etc.) should be quoted. Note the sqltools has built in quoting.
-- 
+- All requires() that import from a node_module should be listed on top
+- All requires() that import a function should be listed next on top
+- All requires() that import an object should be listed after, in it's appropriately used scope
+- Never push directly to the main or staging branches, use Pull requests only
+
+### Error Handling
+
+- All routes, if a thrown error is possible, should catch and forward (next(error)) to the Error handler in app.js
+- If middleware (e.g. authorizeSession) encounters an unrecoverable error it should throw an HttpError
+- All thrown errors should use http-errors modules to create errors
 
 ### Definition of Done
+
+The following criteria should be met before a Pull Request is created for the staging or main branches.
 
 - Models require unit testing all functions mocking necessary services (e.g. database, environment)
 - Routes require unit testing all expected outcomes mocking the Models used
 - Routes require postman happy path integration tests
 - Source code is fully linted with no warnings
 - All jest tests run successfully
-- Pull request to staging branch
-- Staging branch sucessfully deployed to staging environment
-- Integration tests run successfully on staging environment
+- Source code is fully linted with no warnings
+- All jest tests run successfully.
+- Tests should achieve 100% coverage. Documentation and explanation should justify any exceptions.
