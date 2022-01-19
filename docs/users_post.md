@@ -56,17 +56,25 @@ Create a new User. Note users created by this API are created with a `user` role
   **Content:**
 
   ```json
-  { "Error": "Required Parameters Missing" }
+  {
+    "error": {
+      "status": 400,
+      "message": "Required Parameters Missing"
+    }
+  }
   ```
-
-  OR
 
   **Code:** `500 INTERNAL ERROR`
 
   **Content:**
 
   ```json
-  { "Error": "Internal Database Error" }
+  {
+    "error": {
+      "status": 500,
+      "message": "Internal Server Error"
+    }
+  }
   ```
 
 ## Sample Call:

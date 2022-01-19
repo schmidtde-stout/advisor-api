@@ -1,6 +1,11 @@
+const log = require('loglevel');
 const stytchwrapper = require('./stytchwrapper');
 const auth = require('./auth');
 const { getMockReq, getMockRes } = require('@jest-mock/express');
+
+beforeAll(() => {
+  log.disableAll();
+});
 
 jest.mock('./environment', () => {
   return {

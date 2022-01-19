@@ -1,3 +1,4 @@
+const log = require('loglevel');
 module.exports.db = {};
 
 function initialize() {
@@ -21,11 +22,11 @@ function initialize() {
       if (err) {
         throw err;
       }
-      console.log('successfully connected to database');
+      log.info('Server successfully connected to database and setup schema.');
     }
   );
 
-  console.log(`database has ${module.exports.db.totalCount} clients existing within the pool`);
+  log.info(`database has ${module.exports.db.totalCount} clients existing within the pool`);
 }
 
 module.exports.initialize = initialize;

@@ -1,4 +1,5 @@
 const express = require('express');
+const log = require('loglevel');
 const HttpError = require('http-errors');
 const { isEmpty } = require('./../services/utils');
 const User = require('./../models/User');
@@ -10,6 +11,7 @@ module.exports = () => {
   router.get('/', authorizeSession, async (req, res, next) => {
     try {
       const users = await User.findAll(null, req.query.limit, req.query.offset);
+      log.info(`${req.method} ${req.originalUrl} success: returning ${users.length} user(s)`);
       return res.send(users);
     } catch (error) {
       next(error);
@@ -23,6 +25,7 @@ module.exports = () => {
       if (isEmpty(user)) {
         throw new HttpError.NotFound();
       }
+      log.info(`${req.method} ${req.originalUrl} success: returning user ${id}`);
       return res.send(user);
     } catch (error) {
       next(error);
@@ -36,6 +39,7 @@ module.exports = () => {
       if (isEmpty(user)) {
         throw new HttpError.NotFound();
       }
+      log.info(`${req.method} ${req.originalUrl} success: returning user ${userId}`);
       return res.send(user);
     } catch (error) {
       next(error);
@@ -52,10 +56,10 @@ module.exports = () => {
       let user = await User.findOne({ userId: userId });
       if (isEmpty(user)) {
         user = await User.create(userId, email);
-        res.setHeader('Location', `/users/${user.id}`);
-        return res.status(201).send(user);
+        res.status(201); // otherwise
       }
       res.setHeader('Location', `/users/${user.id}`);
+      log.info(`${req.method} ${req.originalUrl} success: returning user ${email}`);
       return res.send(user);
     } catch (error) {
       next(error);

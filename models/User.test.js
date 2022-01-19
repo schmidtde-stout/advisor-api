@@ -1,6 +1,11 @@
+const log = require('loglevel');
 const { db } = require('../services/database');
 const env = require('../services/environment');
 const User = require('./User');
+
+beforeAll(() => {
+  log.disableAll();
+});
 
 jest.mock('../services/database.js', () => {
   return {
@@ -36,7 +41,6 @@ describe('User Model', () => {
   beforeEach(() => {
     db.query.mockReset();
     db.query.mockResolvedValue(null);
-    jest.spyOn(console, 'log').mockImplementation(() => {});
   });
 
   describe('querying a single user by id', () => {

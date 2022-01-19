@@ -9,7 +9,7 @@ The bearer token is actually a Stytch session token. When the Front End (FE) aut
 
 _Bearer Token usage in API_
 
-Every request received by the API must also be accompanied with the Stytch session token carried in the [Authorization header as a Bearer Token](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication). This session token is then [authenticated with Stytch](https://stytch.com/docs/api/session-auth) before it proceeds with the API task, see the auth service.
+Every request received by the API must also be accompanied with the Stytch session token carried in the [Authorization header as a Bearer Token](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication). This session token is then [authenticated with Stytch](https://stytch.com/docs/api/session-auth) before it proceeds with the API task, [see the auth service ](/services/auth.js)
 
 ## Endpoints
 

@@ -52,13 +52,31 @@ Returns json data about a single user.
 
   **Code:** `404 NOT FOUND`
 
-  **Content:** `{}`
+  **Content:**
+
+  ```json
+  {
+    "error": {
+      "status": 404,
+      "message": "Not Found"
+    }
+  }
+  ```
 
   OR
 
   **Code:** `500 INTERNAL ERROR`
 
-  **Content:** None
+  **Content:**
+
+  ```json
+  {
+    "error": {
+      "status": 500,
+      "message": "Internal Server Error"
+    }
+  }
+  ```
 
 ## Sample Call:
 
@@ -143,7 +161,16 @@ Returns a json array about all users.
 
   **Code:** `500 INTERNAL ERROR`
 
-  **Content:** None
+  **Content:**
+
+  ```json
+  {
+    "error": {
+      "status": 500,
+      "message": "Internal Server Error"
+    }
+  }
+  ```
 
 ## Sample Call:
 

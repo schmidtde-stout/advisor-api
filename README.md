@@ -23,4 +23,5 @@ Prerequisite: Node.js 14+ must be installed first and you must have a connection
   ```
 - Open a terminal in the root of this repo:
   - Run `npm install`
+  - After install, an audit is run and should show `found 0 vulnerabilities`, if however it says vulnerabilities were found, then run `npm audit fix`
   - Run `npm start`

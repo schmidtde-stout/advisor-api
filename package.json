@@ -14,9 +14,12 @@
     "test:debug": "npx jest --runInBand"
   },
   "dependencies": {
+    "chalk": "4.1.2",
     "dotenv": "^10.0.0",
     "eslint-plugin-jest": "^25.3.3",
     "express": "^4.16.3",
+    "loglevel": "^1.8.0",
+    "loglevel-plugin-prefix": "^0.8.4",
     "path": "^0.12.7",
     "pg": "^8.7.1",
     "pg-connection-string": "^2.5.0",
