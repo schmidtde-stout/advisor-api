@@ -85,7 +85,6 @@ The following criteria should be met before a Pull Request is created for the st
 
 - Models require unit testing all functions mocking necessary services (e.g. database, environment)
 - Routes require unit testing all expected outcomes mocking the Models used
-- Routes require postman happy path integration tests
 - Source code is fully linted with no warnings
 - All jest tests run successfully
 - Source code is fully linted with no warnings

@@ -108,7 +108,7 @@ describe('GET /users', () => {
     });
 
     test('should respond with a 500 status code when an error occurs', async () => {
-      User.findOne.mockRejectedValueOnce(HttpError(500, 'Some Database Error'));
+      User.findOne.mockRejectedValueOnce(new Error('Some Database Error'));
       const response = await request(app).get(`/users/100`);
       expect(response.statusCode).toBe(500);
     });
@@ -154,7 +154,7 @@ describe('GET /users', () => {
     });
 
     test('should respond with a 500 status code when an error occurs', async () => {
-      User.findOne.mockRejectedValueOnce(HttpError(500, 'Some Database Error'));
+      User.findOne.mockRejectedValueOnce(new Error('Some Database Error'));
       const response = await request(app).get(`/users/user-test-someguid`);
       expect(response.statusCode).toBe(500);
     });
@@ -361,6 +361,31 @@ describe('POST /users', () => {
         email: row.email,
       };
       User.findOne.mockResolvedValueOnce(null);
+      const response = await request(app).post('/users').send(requestParms);
+      expect(response.statusCode).toBe(500);
+    });
+
+    test('should respond with a 500 status code when findOne database error occurs', async () => {
+      const data = dataForGetUser(1);
+      const row = data[0];
+      const requestParms = {
+        userId: row.userId,
+        email: row.email,
+      };
+      User.findOne.mockRejectedValueOnce(new Error('some database error'));
+      const response = await request(app).post('/users').send(requestParms);
+      expect(response.statusCode).toBe(500);
+    });
+
+    test('should respond with a 500 status code when create database error occurs', async () => {
+      const data = dataForGetUser(1);
+      const row = data[0];
+      const requestParms = {
+        userId: row.userId,
+        email: row.email,
+      };
+      User.findOne.mockResolvedValueOnce({});
+      User.create.mockRejectedValueOnce(new Error('some database error'));
       const response = await request(app).post('/users').send(requestParms);
       expect(response.statusCode).toBe(500);
     });
