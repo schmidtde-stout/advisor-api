@@ -1,6 +1,5 @@
 const log = require('loglevel');
 const request = require('supertest');
-const HttpError = require('http-errors');
 const app = require('../app')();
 const User = require('../models/User');
 
