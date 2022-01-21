@@ -3,9 +3,9 @@ module.exports.db = {};
 
 function initialize() {
   const { Pool } = require('pg');
-  const { pgConnectionString } = require('./environment');
+  const { databaseUrl } = require('./environment');
   const parse = require('pg-connection-string').parse;
-  const config = parse(pgConnectionString);
+  const config = parse(databaseUrl);
   module.exports.db = new Pool(config);
 
   module.exports.db.query(
