@@ -16,7 +16,7 @@ Prerequisite: Node.js 14+ must be installed first and you must have a connection
 - Create a .env in the root of this repo, and set the following environment variables:
   ```env
   PORT=3000
-  PG_CONNECTION_STRING=postgres://postgres:<masterpassword>@localhost:5432/<dbname>
+  DATABASE_URL=postgres://postgres:<masterpassword>@localhost:5432/<dbname>
   STYTCH_PROJECT_ID=<See Canvas Notes>
   STYTCH_SECRET=<See Canvas Notes>
   MASTER_ADMIN_EMAIL=<your UW-Stout Email>
